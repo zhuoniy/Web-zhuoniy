@@ -1,0 +1,67 @@
+{% extends "blog/base.html" %}
+{% load staticfiles %}
+{% block title %}<title>Global Stream Page</title>{% endblock %}
+
+
+{% block navbar %}
+<ul class="nav navbar-nav navbar-right">
+  <li><a href="{% url 'profile' user.username %}">{{user.first_name}} {{user.last_name}}</a></li>
+  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Menu<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Global</a></li>
+            <li><a href="{% url 'follower' %}">Following</a></li>
+            <li><a href="{% url 'profile' user.username %}">Profile</a></li>
+            <li class="divider"></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div>
+      <h3 class="text-center"><strong>Global on YBLOG</strong></h3>
+    </div>
+  </div>
+  <hr>
+</div>
+	
+<div class="container">
+
+
+  <div class="panel panel-default">
+	  <div class="panel-heading">
+      <h4>Creat a new Post</h4>
+	  </div>
+
+
+	  <div class="panel-body"> 
+        <span id="error" class="error"></span>
+
+        <textarea class="form-control" type="text" placeholder="Write something..." name="text" id='text'></textarea>
+            
+    </div>
+    <div class="panel-footer"> 
+	    <button class="btn btn-default" onclick="addPost()">Post</button>
+    </div>
+  </div>
+
+
+
+  <div id="postlist">
+  </div>
+
+
+
+<hr>
+  <div class="row">
+    <div class="text-center col-md-6 col-md-offset-3">
+<p>Copyright &copy; 2018 &middot; All Rights Reserved &middot; <a href="#">YBLOG</a></p>
+    </div>
+  </div>
+  <hr>
+</div>
+
+{% endblock %}

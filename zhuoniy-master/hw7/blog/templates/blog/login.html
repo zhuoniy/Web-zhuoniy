@@ -1,0 +1,48 @@
+{% extends "blog/base.html" %}
+{% load staticfiles %}
+{% block title %}<title>Global Stream Page</title>{% endblock %}
+
+
+{% block navbar %}
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div>
+      <h3 class="text-center"><strong>YBLOG</strong></h3>
+    </div>
+  </div>
+  <hr>
+</div>
+	
+<div class="container">
+	
+	   <div>
+      <div>
+        {% if form.errors %}
+          <p>Incorrect user name and password, or your account has not been validated.</p> 
+        {% endif %}
+        <form method="post" action="{% url 'login' %}">
+          {{ form.username.label_tag}} <br>
+          {{ form.username }} <br>
+
+          {{ form.password.label_tag}} <br>
+          {{ form.password }} <br>
+          <br>
+          <button> Sign In </button>
+          <br> 
+          <p class="message">Not registered? <a href="register">Create an account</a></p>
+          {% csrf_token %}
+        </form>
+      </div>
+
+  <hr>
+  <div class="row">
+    <div class="text-center col-md-6 col-md-offset-3">
+<p>Copyright &copy; 2018 &middot; All Rights Reserved &middot; <a href="#">YBLOG</a></p>
+    </div>
+  </div>
+  <hr>
+</div>
+{% endblock %}

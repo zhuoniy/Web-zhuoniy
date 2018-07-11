@@ -1,0 +1,91 @@
+{% extends "blog/base.html" %}
+{% load staticfiles %}
+{% block title %}<title>Global Stream Page</title>{% endblock %}
+
+
+{% block navbar %}
+<ul class="nav navbar-nav navbar-right">
+  <li><a href="{% url 'profile' now_user.username %}">{{now_user.first_name}} {{now_user.last_name}}</a></li>
+  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Menu<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="{% url 'global' %}">Global</a></li>
+            <li><a href="{% url 'follower' %}">Following</a></li>
+            <li><a href="{% url 'profile' now_user.username %}">Profile</a></li>
+            <li class="divider"></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+	
+<div class="container">
+	
+  <ul class="media-list">
+    <a class="pull-left" href="#">
+        {% if user_profile.picture %}
+            <img src="{% url 'picture' user.id %}" width="200px">
+        {% else %}
+            <img class="media-object" src="{% static 'blog/images/MediaObj_Placeholder.png' %}">
+        {% endif %}
+    </a>
+    <div class="media-body">      
+      <h2 class="media-heading">{{user.first_name}} {{user.last_name}}</h2>
+      <h4 class="media-heading">Profile</h4>
+      {% if user_profile.bio %}
+      <p>{{ user_profile.bio }}</p>
+      {% endif %}
+      <!-- Nested media object -->    </div>
+	  
+  </ul>
+
+</div>
+
+  {% if user.username == now_user.username %}
+  <hr>
+  <div class="container">
+    <a href="{% url 'edit_profile' %}"  class="btn btn-sm btn-default">Edit Profile</a>
+  </div>
+  {% endif %}
+
+
+
+{% if user.username == now_user.username %}
+<div class="container">
+	<hr>
+	<ul class="list-group">
+	  <li class="list-group-item">Following </li>
+    {% for following in follows %}
+	  <li class="list-group-item"><span class="badge">
+    </span><a href="{% url 'profile' following.username %}">{{following.first_name}} {{ following.last_name }}</a></li>
+    {% endfor %}
+  </ul>
+	
+  </div>
+
+
+{% else %}
+<hr>
+<div class="container">
+  <form  action="{% url 'follow' user.username %}" method="post">
+    <button class="btn btn-sm btn-default">{{ if_follow }}</button>
+    {% csrf_token %}
+  </form>
+</div>
+{% endif %}
+
+
+
+
+<hr>
+  <div class="row">
+    <div class="text-center col-md-6 col-md-offset-3">
+<p>Copyright &copy; 2018 &middot; All Rights Reserved &middot; <a href="#">YBLOG</a></p>
+    </div>
+  </div>
+  <hr>
+</div>
+{% endblock %}

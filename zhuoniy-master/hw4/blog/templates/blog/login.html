@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YBLOG</title>
+
+{% load staticfiles %}
+<!-- Bootstrap -->
+<link href="{% static 'blog/css/bootstrap.css' %}" rel="stylesheet" type="text/css">
+
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid"> 
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+    <a class="navbar-brand" href="#"><strong>YBLOG</strong></a></div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="defaultNavbar1">
+      <ul class="nav navbar-nav">
+        <li class="active"></li>
+        <li></li>
+        <li class="dropdown">
+<ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+
+    </div>
+    <!-- /.navbar-collapse --> 
+  </div>
+  <!-- /.container-fluid --> 
+</nav>
+<div class="container-fluid">
+  <div class="row">
+    <div>
+      <h3 class="text-center"><strong>YBLOG</strong></h3>
+    </div>
+  </div>
+  <hr>
+</div>
+	
+<div class="container">
+	
+	   <div>
+      <div>
+        {% if form.errors %}
+          <p>Incorrect user name and password, or your account has not been validated.</p> 
+        {% endif %}
+        <form method="post" action="{% url 'login' %}">
+          {{ form.username.label_tag}} <br>
+          {{ form.username }} <br>
+
+          {{ form.password.label_tag}} <br>
+          {{ form.password }} <br>
+          <br>
+          <button> Sign In </button>
+          <br> 
+          <p class="message">Not registered? <a href="register">Create an account</a></p>
+          {% csrf_token %}
+        </form>
+      </div>
+
+  <hr>
+  <div class="row">
+    <div class="text-center col-md-6 col-md-offset-3">
+<p>Copyright &copy; 2018 &middot; All Rights Reserved &middot; <a href="#">YBLOG</a></p>
+    </div>
+  </div>
+  <hr>
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="{% static 'blog/js/jquery-1.11.3.min.js' %}"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script src="{% static 'blog/js/bootstrap.js' %}"></script>
+</body>
+</html>

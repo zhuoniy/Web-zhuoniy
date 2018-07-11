@@ -1,0 +1,66 @@
+{% extends "blog/base.html" %}
+{% load staticfiles %}
+{% block title %}<title>Global Stream Page</title>{% endblock %}
+
+
+{% block navbar %}
+<ul class="nav navbar-nav navbar-right">
+  <li><a href="{% url 'profile' user.username %}">{{user.first_name}} {{user.last_name}}</a></li>
+  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Menu<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="{% url 'global' %}">Global</a></li>
+            <li><a href="{% url 'follower' %}">Following</a></li>
+            <li><a href="#">Profile</a></li>
+            <li class="divider"></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+  
+<div class="container">
+  
+      <h2 class="media-heading">{{user.first_name}} {{user.last_name}}</h2>
+      <h4 class="media-heading">Edit Profile</h4>
+
+  <form enctype="multipart/form-data" action="" method="post">
+
+
+        {% for field in form.visible_fields %}
+          <label>{{field.label}}</label>
+          {% if field.label == 'Profile Picture' %}
+            <span id="edit-upload-picture">{{field}}</span>
+          {% else %}
+            <input type="text" class="form-control" name="{{field.name}}">
+          {% endif %}
+          <p style="color: red">{{field.errors}}</p>
+        {% endfor %}
+
+    <div class="media-body">      
+
+        <div class="panel-footer"> 
+           <button class="btn btn-default">Save changes</button>
+        </div>
+
+      <!-- Nested media object -->    </div>
+    
+
+  {% csrf_token %}
+  </form>
+  <hr>
+</div>
+
+
+<hr>
+  <div class="row">
+    <div class="text-center col-md-6 col-md-offset-3">
+<p>Copyright &copy; 2018 &middot; All Rights Reserved &middot; <a href="#">YBLOG</a></p>
+    </div>
+  </div>
+  <hr>
+</div>
+{% endblock %}

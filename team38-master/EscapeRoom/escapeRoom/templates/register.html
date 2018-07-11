@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+    <title>EscapeRoom register</title>
+    <link href="{% static '/css/register.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %} 
+	<div class="register_view">
+        <form class="form-signin" action="{% url 'register' %}" method="POST">
+        	<h1 class ="h3 mb-3 font-weight-normal" id="titles">EscapeRoom Register </h1>
+        	<label for="username" class="sr-only">User Name</label>
+        	{{form.username}}
+        	<span style="color: red">{{ form.username.errors }}</span>
+        	<label for="first_name" class="sr-only">First Name</label>
+        	{{form.first_name}}
+        	<label for="last_name" class="sr-only">Last Name</label>
+        	{{ form.last_name}}
+        	<label for="email" class="sr-only">Email Address</label>
+        	{{ form.email }}
+        	<span style="color: red">{{ form.email.errors }}</span>
+        	<label for="password" class="sr-only">Password</label>
+        	{{ form.password }}
+        	<label for="password_confirm" class="sr-only">Password Confirm</label>
+        	{{ form.password_confirm }}
+        	<span style="color: red">{{ form.password_confirm.errors }}</span>
+        	<button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+        {% csrf_token %}
+        </form>
+    </div>
+{% endblock %}

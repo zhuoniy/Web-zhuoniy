@@ -1,0 +1,46 @@
+#puzzle_body {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  padding-left: 100px;
+  margin: 20px;
+}
+.puzzle-row {
+  display: flex;
+  text-align: center;
+}
+.puzzleBox {
+  display: block;
+  text-align: center;
+  height: 160px;
+  width: 160px;
+  margin: 10px;
+  border: 2px dashed;
+}
+#footer {
+  display: flex;
+  flex-direction: column;
+}
+#img-section {
+  display: flex;
+  box-sizing: border-box;
+  padding: 15px;
+}
+.image {
+  display: block;
+  height: 170px;
+  width: 170px;
+  padding: 5px;
+  text-align: center;
+  }
+  .image:hover {
+  background-color: #aef;
+}
+img {
+  width: 160px;
+  height: 160px;
+}
+#myModal1{
+  width:100%;
+  height: 80%;
+}

@@ -1,0 +1,120 @@
+<!-- 
+reference:
+1.modal css: http://materializecss.com/modals.html
+2.puzzle game: https://github.com/zaq258123/Puzzle
+3.system color: http://materializecss.com/color.html
+4.Guess word:https://github.com/rithmschool/guess_the_password
+5.Model: https://threejs.org/
+6.Charcter: https://threejs.org/
+ -->
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+  		<meta charset="utf-8">
+  		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  		{% load static %}
+
+        <link href="{% static 'css/materialize.css' %}" rel="stylesheet">
+        <script src="{% static 'js/jquery-2.1.4.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/materialize.js' %}"></script>
+        <script src="{% static 'js/materialize.min.js' %}"></script>
+        <link href="{% static 'css/base.css' %}" rel="stylesheet">
+        <link href="{% static 'bootstrap-4.0.0-beta-dist/css/bootstrap.min.css'%}" rel="stylesheet">
+  		{% block css %}
+  		{% endblock %}
+        {% block modal1 %}
+        {% endblock %}
+        <script>
+            function checkInp()
+            {
+                var x=document.forms["myForm"]["input"].value;
+                if (isNaN(x)) // this is the code I need to change
+                {
+                    alert("Must input numbers");
+                    document.forms["myForm"]["input"].setValue("");
+                    return false;
+                }
+            }
+        </script>
+  	</head>
+  	<body>
+  		<!-- Navigation -->
+  		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  		<a class="navbar-brand" href="#">EscapeRoom</a>
+  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+  		<span class="navbar-toggler-icon"></span>
+  		</button>
+  		<div class="collapse navbar-collapse" id="navbarsExample07">
+  			<ul class="navbar-nav ml-auto">
+  				<li class="nav-item">
+              		<a class="nav-link" href="{% url 'main_page' %}">Choose level</a>
+            	</li>
+                {% block nav %}
+            	<li class="nav-item">
+            		<a class="nav-link modal-trigger" onclick="$('#myModal').modal('open')" >Create/join room</a>
+          		</li>
+                {% endblock %}
+          		{% if user and user.id %}
+                	<li class="nav-item">
+                    	<a class="nav-link" href="{%url 'user-profile' user.id %}">Profile</a>
+                	</li>
+                {% else %}
+                	<li class="nav-item">
+                    	<a class="nav-link" href="#">Profile</a>
+                	</li>
+                {% endif%}
+
+          		{% if user and user.is_authenticated %}
+                	<li class="nav-item">
+                    	<a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                	</li>
+                {% else %}
+                	<li class="nav-item">
+                    	<a class="nav-link" href="{% url 'login' %}">Login</a>
+                	</li>
+                {% endif %}
+            </ul>
+        </div>
+        </nav>
+        <div class="modal" id="myModal">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Create/Join a game</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <form class="form-signin" name="myForm" action="{% url 'create_join_game' %}"  method = "post">
+                            <h1 class ="h3 mb-3 font-weight-normal">Room No.</h1>
+                            <input type="text" id ="input" name = 'input' class="form-control" size="8" pattern="[0-9]{4}"
+                             title="only 4 digits room number"  required="required" />
+                            <h1 class ="h3 mb-3 font-weight-normal">Level No.</h1>
+                            <input type="text" id ="level" name = 'level' class="form-control" size="8" pattern="[1-2]{1}"
+                             title="only allow one or two" required = "required"/>
+                            <button type="submit"  id = "sub_bt" class="modal-action btn btn-primary" >Submit</button>
+                            <button type="button" class="modal-action modal-close btn btn-primary" >Close</button>
+                            {% csrf_token %}
+                        </form>
+                    </div>
+                </div>
+        </div>
+        <!--body below nav-->
+        <div id="body-div-below-nav" class="container">
+        	{% block content %} 
+        	{% endblock %}
+        </div>
+        <div>
+            <!--notification-->
+            {% if messages %}
+                {% for msg in messages %}
+                    <p class="message-notification">{{msg}}</p>
+                {% endfor %}
+            {% endif %}
+            <!--self define error-->
+            {% if errors %}
+                {% for error in errors %}
+                    <p class="message-error">{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+  	</body>

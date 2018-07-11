@@ -1,0 +1,27 @@
+body {
+    padding-top: 54px;
+}
+
+#compose-box{
+	width: 100%;
+	height: 5rem;
+}
+#compose-button {
+	margin-top: 1rem!important;
+}
+.card {
+	margin-top: 1rem;
+}
+#left-profile {
+	border: 1px solid rgba(0,0,0,.125);
+	margin: 1rem;
+	padding: 0.5rem;
+}
+
+#left-profile-Name {
+	margin: 0.1rem;
+}
+.my_card {
+	margin-bottom: 1rem!important;
+	margin-top: 1rem!important;
+}

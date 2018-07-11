@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+	<title>Tribbler Profile</title>
+	<link href="{% static 'css/profile.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<!-- Page Content -->
+	<div class="container">
+		<div class="row">
+		<!-- Left Sidebar -->
+            <div class="col-md-4" id = "left-profile">
+            	<div class="card">
+            		<h5 class="card-header">My Profile</h5>
+            		<div class="card-body">
+            			<div>
+                            <img class="d-flex mr-3" src="{% url 'get-image' profile.user.id%}" alt="photo holder" width="80px">
+                        </div>
+
+            			<ul class="list-unstyled mb-0">
+            				<li>
+            					<p>UserName: {{profile.user.username}} </p>
+            				</li>
+            				<li>
+            					<p>First Name: {{profile.user.first_name}} </p>
+            				</li>
+            				<li>
+            					<p>Last Name: {{profile.user.last_name}} </p>
+            				</li>
+                            <li>
+                                <p>Email: {{profile.user.email}} </p>
+                            </li>
+            				<li>
+            					<p>levels: {{profile.level}} </p>
+            				</li>
+            				<li>
+            					<p>Create_time: {{profile.creation_time}} </p>
+            				</li>
+                            <li>
+                                <p>Bio: {{profile.bio}} </p>
+                            </li>
+                   		    {% if user == profile_owner %}
+                                <li>
+                                    <a href="{% url 'change-password' %}"> Change My Password </a>
+                                </li>
+                                <li>
+            						<a href = "{% url 'user-profile-edit' %}"> Change Profile</a>
+            					</li>
+            				{% endif %}
+            			</ul>
+            		</div>
+            	</div>
+			</div>
+            <div class="col-md-8" id="following-div">
+                <h2 class ="h3 mb-3 font-weight-normal">Played list</h2>
+				{% if playings %}
+				<ul class="list-group">
+				{% for playing in playings %}
+				<li class="list-group-item">
+                    <img class="d-flex mr-3" src="{% url 'get-image' playing.user.id%}" alt="photo holder" width="80px">
+					<p>
+						<a class="text-info" href="{% url 'user-profile' playing.user.id %}">
+						{{playing.user.username}}</a>
+
+					</p>
+                    {{playing.creation_time}}
+				</li>
+				{% endfor%}
+                </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,12 @@
+
+*.pyc
+
+db.sqlite3
+config.ini
+
+
+# Image files (so we don't put into the repo demo files uploaded when this app was run)
+*.jpg
+*.gif
+*.jpeg
+*.png

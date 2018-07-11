@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+    <title>EscapeRoom Login in</title>
+    <link href="{% static '/css/login.css' %}" rel="stylesheet">
+{% endblock%}
+{% block content %} 
+	<div class="login_view">
+		<form class="form-signin" action="{% url 'login' %}" method = "post">
+			<h1 class ="h3 mb-3 font-weight-normal" id="titles">EscapeRoom Login </h1>
+			{{form.username}}
+			{{form.password}}
+			<div class="register-link">
+        		<a href="{% url 'register' %}">No Account? Register Now!</a>
+        	</div>
+        	<button class="btn btn-lg btn-primary btn-block" type="submit">Login in</button>
+        	{% csrf_token %}
+        </form>
+	</div>
+{% endblock %}

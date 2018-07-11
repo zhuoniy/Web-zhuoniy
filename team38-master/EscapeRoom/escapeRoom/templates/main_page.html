@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+    <title>EscapeRoom main_page</title>
+    <link rel="stylesheet" href="{%static 'css/main_page.css' %}">
+    <script src="{% static 'js/main_page.js' %}" type="text/javascript"></script>
+
+
+{% endblock%}
+
+{% block content %}
+
+<div class="jumbotron text-center">
+  <h1>Escape room</h1>
+  <p>Welcome to escape room, you can select the levels below!</p>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <div id="level_1">
+      <a href="{% url 'single' 1 %}"><h1>Level 1</h1> </a>
+      <p></p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div id="level_2">
+      <a href="{% url 'single' 2 %}"><h1>Level 2</h1></a>
+      <p></p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div id="level_3">
+      <a href="#"><h1>Level 3</h1></a>
+      <p></p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+      </div>
+    </div>
+  </div>
+</div>
+<audio controls="none" autoplay="autoplay">
+  <!-- <source src="horse.ogg" type="audio/ogg"> -->
+
+  <source src="/media/asset/scare.mp3" type="audio/mpeg">
+</audio>
+{% endblock %}

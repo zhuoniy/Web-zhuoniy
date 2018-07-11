@@ -1,0 +1,162 @@
+# 3ds Max Wavefront OBJ Exporter v0.94b - (c)2007 guruware
+# File Created: 08.09.2013 13:15:47
+
+newmtl White_Matte
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.9098 0.9098 0.9098
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+
+newmtl Lite_Grey_Glossy
+	Ns 54.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.7059 0.7059 0.7059
+	Ks 0.4860 0.4860 0.4860
+	Ke 0.0000 0.0000 0.0000
+
+newmtl Glass
+	Ns 22.0000
+	Ni 1.5000
+	d 0.2000
+	Tr 0.2000
+	Tf 0.2000 0.2000 0.2000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.5882 0.5882 0.5882
+	Ks 0.2430 0.2430 0.2430
+	Ke 0.0000 0.0000 0.0000
+
+newmtl wire_113135006
+	Ns 32
+	d 1
+	Tr 1
+	Tf 1 1 1
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.4431 0.5294 0.0235
+	Ks 0.3500 0.3500 0.3500
+
+newmtl Bar_Front
+	Ns 34.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.5882 0.5882 0.5882
+	Ks 0.3240 0.3240 0.3240
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\Karl\Desktop\pink gradiant.jpg
+	map_Kd C:\Users\Karl\Desktop\pink gradiant.jpg
+
+newmtl white_Glossy
+	Ns 54.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.9137 0.9137 0.9137
+	Ks 0.4860 0.4860 0.4860
+	Ke 0.0000 0.0000 0.0000
+
+newmtl wood
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.5882 0.5882 0.5882
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\Karl\Desktop\3ds Max Shit\Textures\Wood_floor_by_gnrbishop.jpg
+	map_Kd C:\Users\Karl\Desktop\3ds Max Shit\Textures\Wood_floor_by_gnrbishop.jpg
+
+newmtl Marble_floor
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.5882 0.5882 0.5882
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\Karl\Desktop\3ds Max Shit\Textures\Seamless marble texture (8).jpg
+	map_Kd C:\Users\Karl\Desktop\3ds Max Shit\Textures\Seamless marble texture (8).jpg
+
+newmtl Pearl_White
+	Ns 20.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.8588 0.8588 0.8588
+	Ks 0.1192 0.1192 0.1192
+	Ke 0.0000 0.0000 0.0000
+
+newmtl wire_228184153
+	Ns 32
+	d 1
+	Tr 1
+	Tf 1 1 1
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.8941 0.7216 0.6000
+	Ks 0.3500 0.3500 0.3500
+
+newmtl Chrome_Semi_Refl
+	Ns 100.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.1490 0.1490 0.1490
+	Ks 1.1451 1.1451 1.1451
+	Ke 0.0000 0.0000 0.0000
+
+newmtl 03___Default
+	Ns 10.0000
+	Ni 1.5000
+	d 0.8500
+	Tr 0.8500
+	Tf 0.8500 0.8500 0.8500 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.4863 0.2275 0.0000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+
+newmtl Marble_bar_top
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.5882 0.5882 0.5882
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\Karl\Desktop\3ds Max Shit\Textures\Seamless marble texture (8).jpg
+	map_Kd C:\Users\Karl\Desktop\3ds Max Shit\Textures\Seamless marble texture (8).jpg

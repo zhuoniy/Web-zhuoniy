@@ -1,0 +1,206 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+		<title>level1</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				color: #000;
+				font-family:Monospace;
+				font-size:13px;
+				text-align:center;
+				font-weight: bold;
+
+				background-color: #fff;
+				margin: 0px;
+				overflow: hidden;
+			}
+
+			#info {
+				position: absolute;
+				padding: 10px;
+				width: 100%;
+				text-align: center;
+				color: #000;
+			}
+
+			a { color: skyblue; }
+
+			#info a, .button { color: #f00; font-weight: bold; text-decoration: underline; cursor: pointer }
+		</style>
+          <script>
+            var mtl = "{% static 'models/obj/level2/Room.mtl' %}";
+            var obj = "{% static 'models/obj/level2/Room.obj' %}";
+            var base = "{% static 'models/md2/ogro/' %}";
+            var bedurl = "{% static  'img/bed.png' %}";
+            var pcurl = "{% static  'img/pc.png' %}";
+            var doorurl = "{% static  'img/door.jpg' %}";
+            var cabineturl = "{% static  'img/cabinet.jpg' %}";
+            var clothesurl = "{% static  'img/clothes1.jpg' %}";
+            var deerurl = "{% static  'img/deer.jpg' %}";
+            var caturl = "{% static  'img/cat.png' %}";
+            var camelurl = "{% static  'img/camel.jpg' %}";
+            var rabbiturl = "{% static  'img/rabbit.jpg' %}";
+
+            var wordsurl = "{% static 'js/words.js' %}";
+            var picsurl  = "{% static 'js/txt.js' %}";
+            var appurl = "{% static 'js/app.js' %}";
+            var styleurl = "{% static 'css/style.css' %}";
+
+            var parchmentAurl = "{% static  'img/parchmentA.png' %}";
+            var parchmentBurl = "{% static  'img/parchmentB.png' %}";
+            var parchmentCurl = "{% static  'img/parchmentC.png' %}";
+            var parchmentDurl = "{% static  'img/parchmentD.png' %}";
+            var parchmentEurl = "{% static  'img/parchmentE.png' %}";
+            var parchmenturls = ["{% static  'img/parchmentA.png' %}","{% static  'img/parchmentB.png' %}","{% static  'img/parchmentC.png' %}","{% static  'img/parchmentD.png' %}","{% static  'img/parchmentE.png' %}"];
+            var myModalurl = "{% static 'css/myModal1.css' %}";
+            var imgurl = "{% static 'img/' %}";
+
+		</script>
+
+        <link rel="stylesheet" href="{% static 'css/room.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+        <script src="{% static 'js/build/three.js' %} " type="text/javascript"></script>
+		<script src="{% static 'js/controls/OrbitControls.js' %}"></script>
+		<script src="{% static 'js/loaders/MD2Loader.js' %}"></script>
+		<script src="{% static 'js/MorphBlendMesh.js' %}"></script>
+		<script src="{% static 'js/MD2CharacterComplex2.js' %}"></script>
+		<script src="{% static 'js/Gyroscope.js' %}"></script>
+		<script src="{% static 'js/loaders/DDSLoader.js' %}"></script>
+		<script src="{% static 'js/loaders/MTLLoader.js' %}"></script>
+		<script src="{% static 'js/loaders/OBJLoader.js' %}"></script>
+		<script src="{% static 'js/Detector.js' %}"></script>
+		<script src="{% static 'js/libs/stats.min.js' %}"></script>
+        <script src="{% static 'js/playerSocket.js' %}"></script>
+
+{% endblock %}
+                {% block nav %}
+            	<li class="nav-item">
+            		<a class="nav-link modal-trigger" >Create/join room</a>
+          		</li>
+                {% endblock %}
+
+{% block modal1 %}
+	<div id="top"></div>
+    <div class="modal" id="myModal1">
+    </div>
+{% endblock %}
+
+{% block content %}
+	<!-- plyer info -->
+		<div>
+            <div id="playInfo"> </div>
+
+		</div>
+	<!-- end of player info -->
+
+        <div id="playBar"><h4>PlayerList</h4> </div>
+    <!-- player list -->
+        <ul id="playerList">
+
+        </ul>
+    <!-- end of player list -->
+
+    <!-- myModal2 {bed}-->
+	<div class="modal" id="myModal2">
+		<!-- Modal content-->
+	    <div class="modal-content">
+	        <div class="modal-header">
+	            <h4 class="modal-title">Find Next Number</h4>
+	        </div>
+	        <div class="modal-body">
+	        	<img  src="{% static 'img/findnext.jpg' %}" class = "media-object" >
+	        </div>
+	        <div class="modal-footer" id = "myfooter2">
+	            <form class = "submit_form" method="post" onsubmit="return false;">
+                    <label for="input_value" style="float:left">Answer</label>
+                    <input style="float: left" type="text" id="input_value" name="input_value" class="form-control" size="8" required autofocus/>
+	            	<button type="submit" id="sub_bt" class="modal-action btn btn-primary" onclick="compareAnswer2()">Submit</button>
+                    <button type="button" class="modal-action modal-close btn btn-primary" >Close</button>
+	            	<input type="hidden" id="answer" name="answer" value="3888">
+	            	{% csrf_token %}
+	            </form>
+	        </div>
+		</div>
+	</div>
+	<!-- end of myModal2 -->
+
+	<!-- myModal4 -->
+	<div class="modal" id="myModal4">
+		<img id="getImage" style="width:80%;height:100%">
+        <div class="modal-footer" id = "myfooter2">
+            <form class = "submit_form">
+                <label for="input_value" style="float:left">Answer</label>
+                <input style="float: left" type="text" id="input_value2" name="input_value" class="form-control" size="8" required autofocus/>
+                <button type="button" onclick ="compareAnswer()" id="sub_bt" class="modal-action btn-primary btn">Submit</button>
+                <button type="button"  class="modal-action modal-close btn-primary btn">Close</button>
+                <input type="hidden" id="answer2" name="answer">
+            </form>
+        </div>
+        <script>
+            (function() {
+            function Camel() {
+              this.name = "camel";
+              this.image = camelurl;
+            }
+
+            function Rabbit() {
+              this.name = "rabbit";
+              this.image = rabbiturl;
+            }
+
+            function Deer() {
+              this.name = "deer";
+              this.image = deerurl;
+            }
+
+            function Cat() {
+              this.name = "cat";
+              this.image = caturl;
+            }
+
+            var animals =[new Camel(),new Rabbit(),new Deer(),new Cat()];
+            var randomIdx = generateRandomIndex(animals.length);
+            function generateRandomIndex(maxIndex){
+               var randomNum = Math.floor(Math.random()*maxIndex);
+               return randomNum;
+            }
+            var selected = animals[randomIdx];
+            console.log(selected);
+            document.getElementById("answer2").setAttribute("value",selected.name);
+            $("#getImage").attr("src", selected.image);
+            })();
+        </script>
+	</div>
+	<!-- end of myModal4 -->
+
+	<!-- myModal5 -->
+		<div class="modal" id="myModal5">
+			<img id="getImage" src ="{% static 'img/magnifying.jpg' %}" style="width:80%;height:100%">
+            <div class="modal-footer" id = "myfooter2">
+                <form class = "submit_form">
+                    <label for="input_value" style="float:left">Congrats</label>
+                	<h3>You got a hint!</h3>
+                    <button type="button" class="modal-action modal-close btn-primary btn" onclick="getItem(5)">Close</button>
+                </form>
+            </div>
+        </div>
+    <!-- end of myModal5 -->
+
+    <!-- myModel6 door -->
+		<div class="modal" id="myModal6">
+            <a href="{% url 'main_page' %}" >
+			<img id="getImage" src = "{% static 'img/win.png' %}" style="width:80%;height:100%">
+            </a>
+        </div>
+    <!-- end of myModel6 door -->
+
+        <div class="modal" id="myModal3">
+        </div>
+        <div class="modal" id="myModal1">
+        </div>
+
+		<script src="{% static 'js/room2.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,46 @@
+
+th {
+    border: 5px solid #55a255;
+    color: #dd461f;
+    height: 120px;
+    text-align: right;
+    font-size: 80px;    
+    margin: 200px 200px;
+}
+
+.button {
+    border: none;
+    border-radius: 30px;
+    color: white;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    word-spacing: 10px;
+    font-size: 32px;
+    margin: 5px 5px;
+    
+}
+
+.num {
+    background-color: #55a255;
+}
+
+.num:hover {
+    background-color: #036803;
+}
+
+.sign {
+    background-color:Tomato;
+}
+
+.sign:hover {
+    background-color:#dd461f;
+}
+
+.error {
+    color: white;
+    width: 500px;
+    height: 30px;   
+    font-size: 20px;   
+    background-color: Tomato;
+}
